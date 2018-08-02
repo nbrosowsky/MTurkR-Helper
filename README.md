@@ -22,6 +22,8 @@ also made it substantially easier to stop the batch loop and restart it
 at another time (simply by loading the project file and running the
 batch loop again)
 
+What follows would be my basic workflow:
+
 Initiate MTurkR with MTurk credentials
 --------------------------------------
 
@@ -30,33 +32,10 @@ have to add your own to the function). By default it sets the sandbox
 option to FALSE, but this can be changed anytime.
 
 ``` r
-knitr::opts_chunk$set(echo = TRUE)
-
 library(MTurkR)
 
 source(file="init.R")
 init_mturkR()
-```
-
-Some basic project info
------------------------
-
-This is some basic info about the project that would be necessary for
-the create\_project function
-
-``` r
-    # basic info
-    title                <- "Writing arguments for and against your own opinions"
-    description          <- "You will write arguments for and against your own opinions about four products of your choice (4 writing sections / 50-75 words each)"
-    reward               <- "1.75"
-    duration             <- 1800
-    auto.approve.delay   <- seconds(hours = 1)
-    keywords             <- "psychology, experiment, typing, opinion, writing"
-    expURL               <- "https://nbrosowsky.github.io/Exp/IAT/index.html"
-    HITexpiration        <- seconds(days = 1)
-    
-    ## location of file containing list of workers to exclude
-    exclude.workers      <- "mTurkR/previousComps.Rda"
 ```
 
 Create project and first HIT
@@ -81,16 +60,16 @@ workers. It only uses this list once when the project is created.
   # creates project container containing all relevant info
   # creates first hit for batch
   project.info <- create_project(
-                                  title = title,
-                                  description = description,
-                                  reward = reward,
-                                  duration = duration,
-                                  auto.approve.delay = auto.approve.delay,
-                                  keywords = keywords,
-                                  expURL = expURL,
-                                  HITexpiration = HITexpiration,
+                                  title = "This is a title for your HIT",
+                                  description = "This is the description",
+                                  reward = "6.00",
+                                  duration = 1800,
+                                  auto.approve.delay = seconds(hours = 1),
+                                  keywords = "psychology, experiment, typing, opinion, writing",
+                                  expURL = "https://nbrosowsky.github.io/ExpDemos/FaceInversion/task.html",
+                                  HITexpiration = seconds(days = 1),
                                   batch.total = 300,
-                                  exclude.workers = exclude.workers
+                                  exclude.workers = "mTurkR/previousComps.Rda"
                                 )
 ```
 
