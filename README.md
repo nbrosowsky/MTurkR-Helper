@@ -5,7 +5,7 @@ workflow using mTurkR and thought I would share here in case they are
 helpful to anyone else. All the functions can be easily edited for your
 own needs.
 
-The main purpose for creating a number of these functions was that I
+The main purpose for creating these functions was that I
 found it difficult to keep all the information related to an experiment
 organized while I was using the batch loop.
 
@@ -46,7 +46,7 @@ automatically saves this list to mTurkInfo.Rda, and runs the first HIT
 with 9 assignments
 
 This function is clunky right now and has a bunch of default behaviors
-including setting qualifications. You would want to double-check this
+including setting qualifications (also missing fallbacks). You would want to double-check this
 function to ensure that it is creating the HIT the way you’d like.
 
 exclude.workers should be a path to an Rda file containing worker Ids
